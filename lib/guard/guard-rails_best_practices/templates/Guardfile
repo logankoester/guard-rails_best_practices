@@ -1,0 +1,3 @@
+guard 'rails_best_practices' do
+  watch(%r{^app/(.+)\.rb$})
+end
