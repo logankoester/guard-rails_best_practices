@@ -1,5 +1,5 @@
 module Guard
-  class Railsbestpractices
-    VERSION = "0.0.1"
+  class Rails_best_practices
+    VERSION = "0.1.0"
   end
 end

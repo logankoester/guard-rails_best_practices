@@ -4,7 +4,7 @@ require "guard/guard-rails_best_practices/version"
 
 Gem::Specification.new do |s|
   s.name        = "guard-rails_best_practices"
-  s.version     = Guard::Railsbestpractices::VERSION
+  s.version     = Guard::Rails_best_practices::VERSION
   s.authors     = ["Logan Koester"]
   s.email       = ["lkoester@agoragames.com"]
   s.homepage    = ""
@@ -19,6 +19,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_runtime_dependency "rails_best_practices"
+  s.add_runtime_dependency "guard"
 end
