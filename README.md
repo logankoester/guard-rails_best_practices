@@ -38,3 +38,7 @@ It is recommended that you run `rails_best_practices -g` to generate a `rails_be
 so you can tune the checklists to your own unique tastes.
 
 You can also extend rails_best_practices by writing your own checklists, see https://github.com/flyerhzm/rails_best_practices/wiki/How-to-write-your-own-check-list
+
+## Authors
+
+[Logan Koester](http://github.com/logankoester)
