@@ -1,6 +1,6 @@
 require 'guard'
 require 'guard/guard'
-require File.join(File.dirname(__FILE__), "guard-rails_best_practices/version")
+require File.join(File.dirname(__FILE__), "rails_best_practices/version")
 
 module Guard
   class Rails_best_practices < Guard

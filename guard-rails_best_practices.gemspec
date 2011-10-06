@@ -1,24 +1,21 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "guard/guard-rails_best_practices/version"
+require "guard/rails_best_practices/version"
 
 Gem::Specification.new do |s|
   s.name        = "guard-rails_best_practices"
-  s.version     = Guard::Rails_best_practices::VERSION
+  s.version     = Guard::RailsBestPracticesVersion::VERSION
   s.authors     = ["Logan Koester"]
   s.email       = ["lkoester@agoragames.com"]
-  s.homepage    = ""
+  s.homepage    = "http://rubygems.org/gems/guard-rails_best_practices"
   s.summary     = %q{Guard for rails_best_practices, a code metric tool to check the quality of rails code.}
   s.description = %q{Guard for rails_best_practices, a code metric tool to check the quality of rails code.}
 
   s.rubyforge_project = "guard-rails_best_practices"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.files = Dir.glob('{lib}/**/*') + %w[README.md]
   s.require_paths = ["lib"]
 
-  # specify any dependencies here; for example:
-  s.add_runtime_dependency "rails_best_practices"
-  s.add_runtime_dependency "guard"
+  s.add_dependency "guard", ">= 0.8.4"
+  s.add_dependency "rails_best_practices", ">= 1.1.0"
 end
