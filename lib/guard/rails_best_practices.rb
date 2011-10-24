@@ -1,5 +1,7 @@
 require 'guard'
 require 'guard/guard'
+require 'active_support/core_ext/string' # Fixes undefined method `blank?' for "":String
+
 require File.join(File.dirname(__FILE__), "rails_best_practices/version")
 
 module Guard
