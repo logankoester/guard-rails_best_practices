@@ -5,7 +5,7 @@ require 'active_support/core_ext/string' # Fixes undefined method `blank?' for "
 require File.join(File.dirname(__FILE__), "rails_best_practices/version")
 
 module Guard
-  class Rails_best_practices < Guard
+  class RailsBestPractices < Guard
     autoload :Notifier, 'guard/annotate/notifier'
 
     def initialize(watchers = [], options = {})
