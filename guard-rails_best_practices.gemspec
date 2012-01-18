@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir.glob('{lib}/**/*') + %w[README.md]
   s.require_paths = ["lib"]
 
-  s.add_dependency "guard", ">= 0.8.4"
+  s.add_dependency "guard", ">= 0.9"
   s.add_dependency "rails_best_practices", ">= 1.1.0"
-  s.add_dependency "active_support"
+  s.add_dependency "activesupport"
 end
