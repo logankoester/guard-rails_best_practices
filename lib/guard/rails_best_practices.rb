@@ -1,22 +1,23 @@
 require 'guard'
 require 'guard/guard'
-require 'active_support/core_ext/string' # Fixes undefined method `blank?' for "":String
 
 require File.join(File.dirname(__FILE__), "rails_best_practices/version")
 
 module Guard
   class RailsBestPractices < Guard
-    autoload :Notifier, 'guard/annotate/notifier'
+    autoload :Notifier, 'guard/rails_best_practices/notifier'
 
     def initialize(watchers = [], options = {})
-      super
-      options[:vendor]   = true   if options[:vendor].nil?
-      options[:spec]     = true   if options[:spec].nil?
-      options[:test]     = true   if options[:test].nil?
-      options[:features] = true   if options[:features].nil?
-      options[:exclude]  = ''     if options[:exclude].nil?
+      rbp_opts = {  :vendor         => true,
+                    :spec           => true,
+                    :test           => true,
+                    :features       => true
+                  }
+      guard_opts = { :run_at_start   => true }
+      options = rbp_opts.merge options
+      options = guard_opts.merge options
 
-      options[:run_at_start] = true if options[:run_at_start].nil?
+      super
     end
 
     def start
@@ -48,15 +49,20 @@ module Guard
 
   private
     def run_bestpractices
-      UI.info 'Running Rails Best Practices checklist', :reset => true
       started_at = Time.now
 
-      cmd = 'rails_best_practices'
-      cmd += ' --vendor'   if options[:vendor]
-      cmd += ' --spec'     if options[:spec]
-      cmd += ' --test'     if options[:test]
-      cmd += ' --features' if options[:features]
-      cmd += " --exclude #{options[:exclude]}" unless options[:exclude].blank?
+      run_options = options.select { |key, value| value && ![:run_at_start, :notify].include?(key) }.keys.map do |opt|
+        if [:format, :exclude, :only].include?(opt) 
+          [ opt.to_s, options[opt] ].join(' ')
+        else
+          opt.to_s.gsub('_','-')
+        end
+      end
+
+      cmd = (['rails_best_practices'] + run_options).join(' --')
+
+      UI.info "Running Rails Best Practices checklist with command\n=> #{cmd}\n", :reset => true
+
       @result = system(cmd)
 
       Notifier::notify( @result, Time.now - started_at ) if notify?
