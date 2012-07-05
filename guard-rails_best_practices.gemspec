@@ -19,4 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency "guard", ">= 0.9"
   s.add_dependency "rails_best_practices", ">= 1.1.0"
   s.add_dependency "activesupport"
+
+  s.add_development_dependency 'rspec', '~> 2.5'
 end
