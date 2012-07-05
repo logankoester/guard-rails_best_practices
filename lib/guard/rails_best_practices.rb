@@ -1,12 +1,11 @@
 require 'guard'
 require 'guard/guard'
-require 'active_support/core_ext/string' # Fixes undefined method `blank?' for "":String
 
 require File.join(File.dirname(__FILE__), "rails_best_practices/version")
 
 module Guard
   class RailsBestPractices < Guard
-    autoload :Notifier, 'guard/annotate/notifier'
+    autoload :Notifier, 'guard/rails_best_practices/notifier'
 
     def initialize(watchers = [], options = {})
       super
@@ -56,7 +55,7 @@ module Guard
       cmd += ' --spec'     if options[:spec]
       cmd += ' --test'     if options[:test]
       cmd += ' --features' if options[:features]
-      cmd += " --exclude #{options[:exclude]}" unless options[:exclude].blank?
+      cmd += " --exclude #{options[:exclude]}" unless options[:exclude].strip.empty?
       @result = system(cmd)
 
       Notifier::notify( @result, Time.now - started_at ) if notify?
