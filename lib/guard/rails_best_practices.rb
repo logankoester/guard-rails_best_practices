@@ -35,11 +35,11 @@ module Guard
       run_bestpractices
     end
 
-    def run_on_change(paths)
+    def run_on_changes(paths)
       run_bestpractices
     end
 
-    def run_on_deletion(paths)
+    def run_on_removals(paths)
     end
 
     def notify?
