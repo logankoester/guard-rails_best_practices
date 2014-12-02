@@ -6,7 +6,7 @@ module Guard
   class RailsBestPractices < Guard::Plugin
     autoload :Notifier, 'guard/rails_best_practices/notifier'
 
-    def initialize(watchers = [], options = {})
+    def initialize(options = {})
       rbp_opts = {  :vendor         => true,
                     :spec           => true,
                     :test           => true,
