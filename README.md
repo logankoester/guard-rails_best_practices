@@ -33,12 +33,12 @@ These options are available (with the following defaults):
     options[:exclude]  = '' # Exclude [PATTERN]
     options[:run_at_start] = true # Run checklist when guard starts
   
-See https://github.com/flyerhzm/rails_best_practices for details.
+See https://github.com/railsbp/rails_best_practices for details.
 
 It is recommended that you run `rails_best_practices -g` to generate a `rails_best_practices.yml` file for your application,
 so you can tune the checklists to your own unique tastes.
 
-You can also extend `rails_best_practices` by [writing your own checklists](https://github.com/flyerhzm/rails_best_practices/wiki/How-to-write-your-own-check-list) .
+You can also extend `rails_best_practices` by [writing your own checklists](https://github.com/railsbp/rails_best_practices/wiki/How-to-write-your-own-check-list) .
 
 ## Authors
 
