@@ -1,13 +1,12 @@
 require 'guard'
-require 'guard/guard'
 
 require File.join(File.dirname(__FILE__), "rails_best_practices/version")
 
 module Guard
-  class RailsBestPractices < Guard
+  class RailsBestPractices < Guard::Plugin
     autoload :Notifier, 'guard/rails_best_practices/notifier'
 
-    def initialize(watchers = [], options = {})
+    def initialize(options = {})
       rbp_opts = {  :vendor         => true,
                     :spec           => true,
                     :test           => true,
@@ -52,7 +51,7 @@ module Guard
       started_at = Time.now
 
       run_options = options.select { |key, value| value && ![:run_at_start, :notify].include?(key) }.keys.map do |opt|
-        if [:format, :exclude, :only].include?(opt) 
+        if [:format, :exclude, :only].include?(opt)
           [ opt.to_s, options[opt] ].join(' ')
         else
           opt.to_s.gsub('_','-')
