@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://rubygems.org/gems/guard-rails_best_practices"
   s.summary     = %q{Guard for rails_best_practices, a code metric tool to check the quality of rails code.}
   s.description = %q{Guard for rails_best_practices, a code metric tool to check the quality of rails code.}
+  s.license     = 'MIT'
 
   s.rubyforge_project = "guard-rails_best_practices"
 
