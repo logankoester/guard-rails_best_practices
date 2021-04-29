@@ -36,7 +36,7 @@ module Guard
     end
 
     def run_on_changes(paths)
-      run_bestpractices
+      run_bestpractices(paths)
     end
 
     def run_on_removals(paths)
@@ -47,7 +47,7 @@ module Guard
     end
 
   private
-    def run_bestpractices
+    def run_bestpractices(paths = [])
       started_at = Time.now
 
       run_options = options.select { |key, value| value && ![:run_at_start, :notify].include?(key) }.keys.map do |opt|
@@ -59,6 +59,7 @@ module Guard
       end
 
       cmd = (['rails_best_practices'] + run_options).join(' --')
+      cmd += " #{paths.join(' ')}" unless paths.empty?
 
       UI.info "Running Rails Best Practices checklist with command\n=> #{cmd}\n", :reset => true
 
